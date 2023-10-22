@@ -25,7 +25,7 @@ header {
 }
 
 .foreground {
-    transform: translateZ(-5px) scale(2) translateY(210px);
+    transform: translateZ(-5px) scale(2) translateY(192px);
 }
 
 .background,
