@@ -12,6 +12,7 @@ export default function Index() {
       <div className="flex flex-col items-center">
         <h1 className="text-6xl mb-14">👋</h1>
         <Link to={"/parallax"} className="underline mt-4">/parallax</Link>
+        <Link to={"/three"} className="underline mt-2">/three</Link>
       </div>
     </main>
   );
