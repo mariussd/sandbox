@@ -9,7 +9,10 @@ export default function Index() {
   const user = useOptionalUser();
   return (
     <main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
-      balle
+      <div className="flex flex-col items-center">
+        <h1 className="text-6xl mb-14">👋</h1>
+        <Link to={"/parallax"} className="underline mt-4">/parallax</Link>
+      </div>
     </main>
   );
 }
