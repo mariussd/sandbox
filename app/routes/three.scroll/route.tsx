@@ -24,12 +24,6 @@ const Scroll = () => {
       <ambientLight intensity={0.5} />
       <ScrollControls infinite damping={0.01} pages={3}>
         <Cube />
-        <Scroll html>
-          <mesh scale={1.5}>
-            <boxGeometry />
-            <meshStandardMaterial color="mediumpurple" />
-          </mesh>
-        </Scroll>
       </ScrollControls>
     </Canvas>
   );
