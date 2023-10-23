@@ -1,12 +1,12 @@
 import { Canvas, type MeshProps, useFrame } from "@react-three/fiber";
-import { Float, ScrollControls, useScroll } from "@react-three/drei";
+import { Float, ScrollControls, useScroll, Scroll } from "@react-three/drei";
 import { useRef } from "react";
 import { type LinksFunction } from "@remix-run/node";
 import styles from "~/routes/three.scroll/styles/styles.css";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
-const Scroll = () => {
+const ScrollTest = () => {
   return (
     <Canvas
       camera={{
@@ -15,15 +15,14 @@ const Scroll = () => {
         far: 200,
         position: [-6, 3, 6],
       }}
-      style={{
-        marginLeft: 20,
-        paddingRight: 20,
-      }}
     >
       <directionalLight position={[1, 3, 2]} intensity={1.5} />
       <ambientLight intensity={0.5} />
-      <ScrollControls infinite damping={0.01} pages={3}>
+      <ScrollControls damping={0.01} pages={5}>
         <Cube />
+        {/*        <Scroll>
+          <Cube></Cube>
+        </Scroll>*/}
       </ScrollControls>
     </Canvas>
   );
@@ -54,4 +53,4 @@ const Cube = () => {
   );
 };
 
-export default Scroll;
+export default ScrollTest;
