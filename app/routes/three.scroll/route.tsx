@@ -1,5 +1,5 @@
 import { Canvas, type MeshProps, useFrame } from "@react-three/fiber";
-import { Float, ScrollControls, useScroll, Scroll } from "@react-three/drei";
+import { Float, ScrollControls, useScroll } from "@react-three/drei";
 import { useRef } from "react";
 import { type LinksFunction } from "@remix-run/node";
 import styles from "~/routes/three.scroll/styles/styles.css";
@@ -36,6 +36,8 @@ const Cube = () => {
 
   useFrame((state, delta) => {
     const scrollDirection = oldOffset.current - scroll.offset > 0 ? 1 : -1;
+
+    if (!ref.current) return;
 
     ref.current.rotation.y += scroll.delta * 1.3 * scrollDirection;
     ref.current.rotation.z -= scroll.delta * 0.2 * -scrollDirection;
