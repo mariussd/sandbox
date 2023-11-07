@@ -13,16 +13,13 @@ const ScrollTest = () => {
         fov: 45,
         near: 0.1,
         far: 200,
-        position: [-6, 3, 6],
+        position: [0, 0, 6],
       }}
     >
       <directionalLight position={[1, 3, 2]} intensity={1.5} />
       <ambientLight intensity={0.5} />
       <ScrollControls damping={0.01} pages={5}>
         <Cube />
-        {/*        <Scroll>
-          <Cube></Cube>
-        </Scroll>*/}
       </ScrollControls>
     </Canvas>
   );
@@ -34,15 +31,20 @@ const Cube = () => {
 
   const oldOffset = useRef(0);
 
-  useFrame((state, delta) => {
+  useFrame(({ mouse, camera, viewport }) => {
     const scrollDirection = oldOffset.current - scroll.offset > 0 ? 1 : -1;
 
     if (!ref.current) return;
 
-    ref.current.rotation.y += scroll.delta * 1.3 * scrollDirection;
-    ref.current.rotation.z -= scroll.delta * 0.2 * -scrollDirection;
+    ref.current.rotation.y += scroll.delta * 2 * scrollDirection;
+    ref.current.rotation.z -= scroll.delta * 1.3 * -scrollDirection;
 
     oldOffset.current = scroll.offset;
+
+    camera.position.x = 3 * mouse.x - viewport.left;
+    camera.position.y = 3 * mouse.y - viewport.top;
+
+    camera.lookAt(ref.current?.position);
   });
 
   return (
